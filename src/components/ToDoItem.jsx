@@ -1,0 +1,74 @@
+import { useState } from "react";
+
+export const ToDoItem = ({ todo, toggleTodo, deleteTodo, editTodo }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedText, setEditedText] = useState(todo.text);
+
+  return (
+    <li className="flex items-center gap-2">
+      {isEditing ? (
+        <div className="flex items-center gap-2 justify-between w-full">
+          <div className="flex items-center gap-2">
+            <input
+              className="border-2 border-gray-300 rounded-md p-2"
+              type="text"
+              value={editedText}
+              onChange={(e) => setEditedText(e.target.value)}
+            />
+          </div>
+          <div className="flex gap-2">
+            <button
+              className="p-2 cursor-pointer"
+              onClick={() => {
+                editTodo(todo.id, editedText);
+                setIsEditing(false);
+              }}
+            >
+              <i class="fa-solid fa-floppy-disk"></i>
+            </button>
+            <button
+              className="p-2 cursor-pointer"
+              onClick={() => {
+                setIsEditing(false);
+                setEditedText(todo.text);
+              }}
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="flex items-center gap-2 justify-between w-full">
+          <div
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => toggleTodo(todo.id)}
+          >
+            <input
+              className="cursor-pointer hover:scale-110 transition-all duration-300"
+              type="checkbox"
+              id={`todo-${todo.id}`}
+              checked={todo.completed}
+              onChange={() => {}}
+            />
+            <span>{todo.text}</span>
+          </div>
+
+          <div className="flex gap-2">
+            <button
+              className="p-2 cursor-pointer"
+              onClick={() => setIsEditing(true)}
+            >
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button>
+            <button
+              className="p-2 cursor-pointer"
+              onClick={() => deleteTodo(todo.id)}
+            >
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      )}
+    </li>
+  );
+};
