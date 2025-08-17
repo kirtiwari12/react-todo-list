@@ -39,7 +39,7 @@ export const ToDoList = ({
           </div>
           <button
             title="Add todo"
-            className="bg-blue-500 text-white rounded-md p-2 w-fit cursor-pointer"
+            className="bg-blue-500 text-white rounded-full p-2 cursor-pointer h-10 w-10 flex items-center justify-center hover:bg-blue-600 transition-all duration-100"
             onClick={() => {
               setIsError(false);
               if (inputValue.trim() === "") {
@@ -51,7 +51,7 @@ export const ToDoList = ({
               }
             }}
           >
-            Add Todo
+            <i className="fa-solid fa-plus"></i>
           </button>
         </div>
 

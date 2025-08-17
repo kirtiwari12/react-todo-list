@@ -20,7 +20,7 @@ export const ToDoItem = ({ todo, toggleTodo, deleteTodo, editTodo }) => {
           <div className="flex gap-2">
             <button
               title="Save"
-              className="p-2 cursor-pointer"
+              className="p-2 cursor-pointer hover:bg-gray-200 rounded-md transition-all duration-150"
               onClick={() => {
                 editTodo(todo.id, editedText);
                 setIsEditing(false);
@@ -30,7 +30,7 @@ export const ToDoItem = ({ todo, toggleTodo, deleteTodo, editTodo }) => {
             </button>
             <button
               title="Cancel"
-              className="p-2 cursor-pointer"
+              className="p-2 cursor-pointer hover:bg-gray-200 rounded-md transition-all duration-150"
               onClick={() => {
                 setIsEditing(false);
                 setEditedText(todo.text);
