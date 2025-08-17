@@ -13,17 +13,6 @@ export const ToDoList = ({
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col gap-4 p-4 bg-[#ffffff80] w-xs md:w-lg lg:w-md xl:w-lg 2xl:w-xl border-2 border-gray-300 rounded-md">
-        <ul className="list-none flex flex-col gap-2">
-          {todos.map((todo) => (
-            <ToDoItem
-              key={todo.id}
-              todo={todo}
-              toggleTodo={toggleTodo}
-              deleteTodo={deleteTodo}
-              editTodo={editTodo}
-            />
-          ))}
-        </ul>
         <div className="flex gap-2 mt-auto w-full justify-between items-center relative mb-4">
           <div className="flex flex-col gap-2 flex-1">
             <input
@@ -50,7 +39,7 @@ export const ToDoList = ({
           </div>
           <button
             title="Add todo"
-            className="bg-blue-500 text-white rounded-md p-2 w-fit"
+            className="bg-blue-500 text-white rounded-md p-2 w-fit cursor-pointer"
             onClick={() => {
               setIsError(false);
               if (inputValue.trim() === "") {
@@ -65,6 +54,18 @@ export const ToDoList = ({
             Add Todo
           </button>
         </div>
+
+        <ul className="list-none flex flex-col gap-2">
+          {todos.map((todo) => (
+            <ToDoItem
+              key={todo.id}
+              todo={todo}
+              toggleTodo={toggleTodo}
+              deleteTodo={deleteTodo}
+              editTodo={editTodo}
+            />
+          ))}
+        </ul>
       </div>
     </div>
   );

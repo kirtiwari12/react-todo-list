@@ -35,8 +35,7 @@ function App() {
   };
 
   const addTodo = (text) => {
-    const maxId = Math.max(...todos.map((todo) => todo.id));
-    const newTodos = [...todos, { id: maxId + 1, text, completed: false }];
+    const newTodos = [{ id: Date.now(), text, completed: false }, ...todos];
     setTodos(newTodos);
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newTodos));
   };
