@@ -50,7 +50,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="flex flex-col items-center bg-[url('/bg.jpg')] bg-opacity-50 bg-cover bg-center h-screen bg-black/50 bg-blend-overlay">
       <Header />
       <ToDoList
         todos={todos}
@@ -59,7 +59,7 @@ function App() {
         addTodo={addTodo}
         editTodo={editTodo}
       />
-    </>
+    </div>
   );
 }
 
