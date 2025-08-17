@@ -10,6 +10,7 @@ export const ToDoItem = ({ todo, toggleTodo, deleteTodo, editTodo }) => {
         <div className="flex items-center gap-2 justify-between w-full">
           <div className="flex items-center gap-2">
             <input
+              title="Edit todo"
               className="border-2 border-gray-300 rounded-md p-2"
               type="text"
               value={editedText}
@@ -18,28 +19,33 @@ export const ToDoItem = ({ todo, toggleTodo, deleteTodo, editTodo }) => {
           </div>
           <div className="flex gap-2">
             <button
+              title="Save"
               className="p-2 cursor-pointer"
               onClick={() => {
                 editTodo(todo.id, editedText);
                 setIsEditing(false);
               }}
             >
-              <i class="fa-solid fa-floppy-disk"></i>
+              <i className="fa-solid fa-floppy-disk"></i>
             </button>
             <button
+              title="Cancel"
               className="p-2 cursor-pointer"
               onClick={() => {
                 setIsEditing(false);
                 setEditedText(todo.text);
               }}
             >
-              <i class="fa-solid fa-xmark"></i>
+              <i className="fa-solid fa-xmark"></i>
             </button>
           </div>
         </div>
       ) : (
         <div className="flex items-center gap-2 justify-between w-full">
           <div
+            title={`${
+              todo.completed ? "Mark as incomplete" : "Mark as complete"
+            }`}
             className="flex items-center gap-2 cursor-pointer"
             onClick={() => toggleTodo(todo.id)}
           >
@@ -55,16 +61,18 @@ export const ToDoItem = ({ todo, toggleTodo, deleteTodo, editTodo }) => {
 
           <div className="flex gap-2">
             <button
-              className="p-2 cursor-pointer"
+              title="Edit"
+              className="p-2 cursor-pointer hover:bg-gray-200 rounded-md transition-all duration-150"
               onClick={() => setIsEditing(true)}
             >
-              <i class="fa-solid fa-pen-to-square"></i>
+              <i className="fa-solid fa-pen-to-square"></i>
             </button>
             <button
-              className="p-2 cursor-pointer"
+              title="Delete"
+              className="p-2 cursor-pointer hover:bg-gray-200 rounded-md transition-all duration-150"
               onClick={() => deleteTodo(todo.id)}
             >
-              <i class="fa-solid fa-trash"></i>
+              <i className="fa-solid fa-trash"></i>
             </button>
           </div>
         </div>
