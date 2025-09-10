@@ -56,7 +56,9 @@ export const ToDoItem = ({ todo, toggleTodo, deleteTodo, editTodo }) => {
               checked={todo.completed}
               onChange={() => {}}
             />
-            <span>{todo.text}</span>
+            <span className={`${todo.completed ? "line-through" : ""}`}>
+              {todo.text}
+            </span>
           </div>
 
           <div className="flex gap-2">
